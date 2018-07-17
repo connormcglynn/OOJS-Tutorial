@@ -19,10 +19,22 @@ class User {
     }
 }
 
+class Admin extends User {
+    deleteUser(user) {
+        users = users.filter(u => {
+            return u.email != user.email;
+        })
+    }
+}
+
 var userOne = new User('ryu@ninjas.com', 'Ryu');
 var userTwo = new User('yoshi@mariokorp.com', 'Yoshi');
+var adminOne = new Admin('connorappleid@intracitygeeks.org', 'Connor');
 
-userOne.login().updateScore().updateScore().logout();
+var users = [userOne, userTwo, adminOne];
+
+adminOne.deleteUser(userOne);
+console.log(users);
 
 // the 'new' keyword
 // -- creates a new empty object {}
